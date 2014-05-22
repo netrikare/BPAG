@@ -1,3 +1,3 @@
 ==Bitcoin Pseudorandom Address Generator
 
-This project let's you generate addresses that can be easily bruteforced.
+This project lets you generate addresses that can be easily bruteforced.
