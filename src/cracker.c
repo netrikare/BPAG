@@ -1,6 +1,7 @@
 #include "address.h"
 #include "util.h"
 #include <stdio.h>
+#include <sys/ioctl.h>
 #include <string.h>
 #include <pthread.h>
 #include <unistd.h>
@@ -128,8 +129,12 @@ void *threadFun(void *v_thInfo){
 }
 
 void *printProgress(void *v){
+	struct winsize wsize;
 	int i, len, prevHashCount=0;
-	char *c = malloc(CONSOLE_WIDTH);
+	ioctl(0, TIOCGWINSZ, &wsize);
+
+	char *c = malloc(wsize.ws_col);
+
 
 	double lastPerCentDone = 0;
 	long long int currentIterationSum;
@@ -166,8 +171,8 @@ void *printProgress(void *v){
 			printf("%s", c);
 			fflush(stdout);
 			usleep(sleepTime);
-			clearTerminal();
-			memset(c, 0, CONSOLE_WIDTH);
+			clearTerminal(wsize.ws_col);
+			memset(c, 0, wsize.ws_col);
 		}else
 			break;
 	}

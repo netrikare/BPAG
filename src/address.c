@@ -121,7 +121,7 @@ unsigned char* generateRandomAddress(unsigned char len, unsigned char step){
 		unsigned char c = rand() & 0xFF;
 		c = ( c/step * step ) & 0xFF;
 		b[i] =  c & (0xFF/step*step);
-		//b[i] =  (0xFF/step*step); //change this to get worst case scenario during bruteforcing
+		//b[i] =  (0xFF/step*step); //change this to get worst case scenario (search all space) during bruteforcing
 	}
 
 	char *md = malloc(SHA256_DIGEST_LENGTH);
@@ -133,7 +133,7 @@ unsigned char* generateRandomAddress(unsigned char len, unsigned char step){
 	unsigned char *d = sprintfVector(b, len);
 	unsigned char *c = malloc(1024 + strlen(d));
 
-	sprintf(c, "RANDOM:  %s\nADDRESS: %s\nPRIVKEY: %s [wallet import format]\n", d, address, wif);
+	sprintf(c, "RND BYTES:\t%s\nADDRESS:\t%s\nPRIVKEY:\t%s [Wallet Import Format]\n", d, address, wif);
 	printf("%s", c);
 
 	free(c);

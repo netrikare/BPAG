@@ -13,7 +13,7 @@ int main(int argc, char **argv){
 		int w = (d == (int)d && step <=32) && len < 256;
 
 		if(!w){
-			printf("Error: len=%d, step=%d\nStep must be one of 1,2,4,8,16,32 aborting...\nLen must be less than 256\n", len, step);
+			printf("Error: length=%d, step=%d\nLength must be less than 256\nStep must be one of 1,2,4,8,16,32 aborting...\n", len, step);
 			return -1;
 		}
 		unsigned char *a = generateRandomAddress(len, step);
@@ -22,7 +22,7 @@ int main(int argc, char **argv){
 		cracker(len, step, a);
 		free(a);
 	}else{
-		puts("cracker: <size> <step>");
+		puts("cracker: <length> <step>");
 		return -1;
 	}
 }

@@ -27,9 +27,9 @@ int isEqual(unsigned char a[], unsigned char b[], int len){
 	return 1;
 }
 
-void clearTerminal(){
+void clearTerminal(int consoleWidth){
 	int i;
-	for(i=0;i<CONSOLE_WIDTH;i++)
+	for(i=0;i<consoleWidth;i++)
 		printf(" ");
 	printf("\r");
 	fflush(stdout);
